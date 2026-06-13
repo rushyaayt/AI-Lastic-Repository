@@ -2,6 +2,13 @@
 This script acts as your AI engineer. It uses the latest Google GenAI API to intellectually build the project architecture and write the code, and it uses PyGithub to automatically construct the repository on your GitHub account.
 
 To make the AI’s output "professional and good" without failing or outputting broken formatting, this script leverages Structured Outputs (Pydantic). This forces the AI's mind to output pure data (file paths and code content) that the script can systematically push to GitHub.
+## **Features**
+- **Advanced Logging:** Tracks every step professionally instead of using basic print() statements.
+- **CI/CD Pipeline Generation:** Automatically tells the AI to create GitHub Actions workflows.
+- **Branch Management:** Creates a separate dev branch and opens a Pull Request to main, rather than pushing directly to production.
+- **Robust Error Handling:** Catches specific GitHub and API errors so the script doesn't crash unexpectedly.
+
+
 ## Prerequisites
 Before running the script, you need to install the required libraries and set up two API keys.
 #### 1. Install the libraries via your terminal:
