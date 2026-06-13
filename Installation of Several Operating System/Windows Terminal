@@ -1,57 +1,37 @@
-Running this repository in your Windows Terminal is straightforward. Since Windows Terminal usually defaults to **PowerShell**, the way you set your API keys will be slightly different from the standard Command Prompt.
+Running this repository in your Windows Terminal is straightforward. Since Windows Terminal usually defaults to PowerShell, the way you set your API keys will be slightly different from the standard Command Prompt.
 
 Here is the exact, step-by-step process to clone, configure, and run your AI-Lastic-Repository on Windows.
 
-### 1. Clone the Repository
-
+1. Clone the Repository
 First, open your Windows Terminal and download the project to your local machine using Git.
 
-```powershell
+PowerShell
 git clone https://github.com/rushyaayt/AI-Lastic-Repository.git
-
-```
-
-### 2. Navigate to the Project Folder
-
+2. Navigate to the Project Folder
 Move inside the directory you just cloned.
 
-```powershell
+PowerShell
 cd AI-Lastic-Repository
-
-```
-
-### 3. Install the Dependencies
-
+3. Install the Dependencies
 Ensure you have Python installed. Run the following command to install the required libraries for the AI and GitHub integrations.
 
-```powershell
+PowerShell
 pip install google-genai pydantic pygithub
+(Note: If you created a requirements.txt file in your repo, you can simply run pip install -r requirements.txt instead).
 
-```
-
-*(Note: If you created a `requirements.txt` file in your repo, you can simply run `pip install -r requirements.txt` instead).*
-
-### 4. Set Your API Keys (Environment Variables)
-
-Since you are likely using PowerShell in Windows Terminal, you need to use the `$env:` syntax to set your keys temporarily for that session.
+4. Set Your API Keys (Environment Variables)
+Since you are likely using PowerShell in Windows Terminal, you need to use the $env: syntax to set your keys temporarily for that session.
 
 Replace the placeholder text with your actual keys:
 
-```powershell
+PowerShell
 $env:GEMINI_API_KEY="your_actual_gemini_api_key_here"
 $env:GITHUB_TOKEN="your_actual_github_personal_access_token_here"
+(If you happen to be using the older Command Prompt profile within Windows Terminal, use this instead: set GEMINI_API_KEY="your_key" and set GITHUB_TOKEN="your_key").
 
-```
-
-*(If you happen to be using the older **Command Prompt** profile within Windows Terminal, use this instead: `set GEMINI_API_KEY="your_key"` and `set GITHUB_TOKEN="your_key"`).*
-
-### 5. Run the AI Architect
-
+5. Run the AI Architect
 Now that the environment is set up and the script has its "brain" and "hands", run the Python file:
 
-```powershell
+PowerShell
 python ai_repo_builder.py
-
-```
-
 Once you hit enter, the script will start, and you can type your project prompt directly into the terminal!
