@@ -1,71 +1,122 @@
 <div align="center">
+# 🤖 AI-Lastic-Repository
 
-# 🚀 AI-Lastic-Repository 🧠
-*Your Autonomous AI Software Engineer for GitHub*
+**AI-Lastic-Repository** is an autonomous AI software engineer powered by **Google GenAI**, **Pydantic**, and **PyGithub**. It doesn't just write code; it interacts directly with your GitHub repositories to build projects from scratch and automatically resolve open issues.
 
 </div>
 
 ---
 
-## 📖 Overview
 
-This script acts as your dedicated **AI engineer**. It utilizes the latest **Google GenAI API** to intellectually architect projects and write code, while seamlessly integrating with **PyGithub** to automatically construct the repository directly on your GitHub account.
+## ✨ Features
 
-> **💡 The Secret Sauce:** To ensure the AI’s output is professional, reliable, and completely free of formatting errors, this script leverages **Structured Outputs (`Pydantic`)**. This forces the AI's "mind" to output pure, structured data (precise file paths and raw code content), enabling the script to systematically push production-ready code to GitHub.
+This repository contains two powerful autonomous scripts:
 
----
+1. **`ai_repo_builder.py` (Rushikesh)**
+   - Generates entire GitHub repositories from scratch based on a simple prompt.
+   - Structures folders, writes production-ready code, and pushes the initial commit.
 
-## ✨ Key Features
-
-* 📝 **Advanced Logging:** Tracks every architectural decision and push operation professionally, replacing basic `print()` statements with enterprise-grade logs.
-* 🔄 **Automated CI/CD Pipelines:** Automatically instructs the AI to generate complete GitHub Actions workflows for continuous integration.
-* 🔀 **Smart Branch Management:** Safeguards your production environment by creating a dedicated `dev` branch and opening a structured **Pull Request** to `main`, rather than pushing directly.
-* 🛡️ **Robust Error Handling:** Actively catches specific GitHub and API exceptions to ensure the script executes smoothly without unexpected crashes.
+2. **`ai_issue_resolver.py` (Rushikesh)** 
+   - Reads open GitHub Issues in your repository.
+   - Analyzes the issue context and uses GenAI to write the exact code needed to fix it.
+   - Automatically creates a new branch, commits the files, and opens a Pull Request (PR) to resolve the issue.
 
 ---
 
 ## 🛠️ Prerequisites
 
-Before deploying your AI engineer, you need to install the required dependencies and configure your environment securely.
+- Python 3.9 or higher
+- A GitHub account
+- A Google AI Studio account (for the Gemini API)
 
-### 1️⃣ Install Dependencies
-Run the following command in your terminal:
+## 📦 Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/rushyaayt/AI-Lastic-Repository.git
+   cd AI-Lastic-Repository
+   ```
+   
+2. Install the required Python packages:
+   ```bash
+   pip install google-genai PyGithub pydantic python-dotenv
+   ```
+
+---
+
+## 🔐 Environment Setup (Crucial)
+
+To allow the scripts to interact with GitHub and Google GenAI, you must set up your API keys securely using a `.env` file.
+
+### Step 1: Get your API Keys
+1. **GitHub Token:** 
+   - Go to GitHub **Settings** > **Developer settings** > **Personal access tokens** > **Tokens (classic)**.
+   - Generate a new token. **Important:** You must check the **`repo`** scope so the script can create branches and open PRs.
+2. **Gemini API Key:**
+   - Go to [Google AI Studio](https://aistudio.google.com/).
+   - Click **Get API key** and create a new key.
+
+### Step 2: Create the `.env` file
+In the root directory of this project, create a file named exactly `.env` and add your keys:
+
+```env
+# .env file
+GITHUB_TOKEN=ghp_paste_your_github_token_here
+GEMINI_API_KEY=AIza_paste_your_gemini_key_here
+```
+
+### Step 3: Protect your keys
+**Never commit your `.env` file to GitHub!** Ensure your `.gitignore` file includes `.env`:
+
+```gitignore
+# .gitignore
+.env
+__pycache__/
+*.pyc
+```
+
+---
+
+## 🚀 Usage
+
+### 1. Build a New Repository from Scratch
+Use the repo builder to generate a brand new project.
+
 ```bash
-pip install google-genai pydantic pygithub
+python ai_repo_builder.py --prompt "Build a Python FastAPI backend for a todo list app with SQLite" --repo-name "my-new-todo-app"
 ```
-### **2️⃣ Obtain Your Access Tokens**
-You will need two essential keys to grant the script its "brain" and its "hands":
-- 🧠 GEMINI_API_KEY: Obtain this from Google AI Studio. This powers the AI generation.
-- 🐙 GITHUB_TOKEN: Navigate to GitHub ➡️ Settings ➡️ Developer Settings ➡️ Personal Access Tokens (Classic). Generate a new token and ensure you check the repo scope to grant repository creation permissions.
-## 🚀 How to Run It
-Follow these steps to generate your first AI-built repository:
-**Step 1:** Open your terminal.
 
-**Step 2:**  Export your API keys temporarily so the script can access them securely.
+### 2. Automatically Resolve a GitHub Issue
+Use the issue resolver to fix a bug or add a feature to an existing repository.
 
-- 🍏 Mac / 🐧 Linux:
-- ```
-  export GEMINI_API_KEY="your_api_key_here"
-  export GITHUB_TOKEN="your_github_token_here"
-  ```
-- 🪟 Windows (Command Prompt):
-- ```
-  set GEMINI_API_KEY="your_api_key_here"
-  set GITHUB_TOKEN="your_github_token_here"
-  ```
-**Step 3:** Execute the builder script.
+```bash
+python ai_issue_resolver.py --repo "your-username/your-repo-name" --issue 42
 ```
-python ai_repo_builder.py
+*Replace `42` with the actual issue number you want the AI to fix. The script will automatically create a branch (e.g., `fix/issue-42`) and open a Pull Request!*
+
+---
+
+## 🧠 How it Works
+
+Both scripts utilize **Pydantic** to enforce strict structured outputs from the LLM. Instead of asking the AI to "write code" and parsing messy markdown, we force the AI to output pure JSON that maps directly to our Python data models. This ensures:
+- No hallucinated markdown formatting breaking the code.
+- Reliable file paths and commit messages.
+- Seamless integration with the GitHub API via PyGithub.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/rushyaayt/AI-Lastic-Repository/issues). 
+
+*Tip: Try using `ai_issue_resolver.py` to fix them!*
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
 ```
-**Step 4:** Provide your project prompt when asked.
-### 📋 Example 1: Full-Stack Next.js & TypeScript Dashboard
-#### Prompt to copy:
-```
-"Create a professional full-stack web application blueprint using Next.js (App Router) and TypeScript. The project should be an Administrative Dashboard featuring an analytics page, a user management table with mock data, and an integration with Tailwind CSS for styling. Include a comprehensive README.md with component documentation, a Dockerfile for containerized deployment, a .gitignore tailored for Next.js, and a GitHub Actions workflow that automatically runs ESLint and build checks on every push."
-```
-### 🌐 Example 2: Secure Node.js Express Microservice with Docker
-#### Prompt to copy:
-```
-"Build a production-ready microservice using Node.js, Express, and JavaScript for an e-commerce Product Catalog API. The project must implement CRUD operations, structured logging using Winston, request validation using Joi, and error-handling middleware. Include a docker-compose.yml file that spins up the Node.js application along with a MongoDB database instance. Provide a professional README.md with clear API route specifications (endpoints, methods, request bodies), a .env.example file, and a GitHub Actions CI pipeline to run automated Jest tests."
-```
-**Step 5:** 🍿 Watch the magic! Sit back as the AI plans the architecture, initializes the repository on your GitHub account, and securely commits the code file by file.
+
+### Next Steps:
+1. Click the **Copy** button on the top right of the code block above.
+2. Open your `README.md` file in your repository.
+3. Delete the old content, paste the new content, and save.
+4. Commit and push to GitHub! 
+
