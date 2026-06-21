@@ -120,3 +120,35 @@ This project is open source and available under the [MIT License](LICENSE).
 3. Delete the old content, paste the new content, and save.
 4. Commit and push to GitHub! 
 
+
+
+```
+
+
+
+
+
+While your existing script (`ai_repo_builder.py`) *creates* a repository from scratch, this new script *maintains* it. It reads an open GitHub Issue, uses GenAI to write the code to fix it, creates a new branch, commits the files, and automatically opens a Pull Request.
+
+Here is the advanced script to add to your repository:
+
+### The Code: `ai_issue_resolver.py`
+
+
+
+
+
+
+### Why this enhances your repository:
+1.  **Completes the "AI Engineer" Lifecycle:** Your original script *builds* the house. This script *fixes the plumbing* when something breaks. Together, they make the repository a complete autonomous lifecycle tool.
+2.  **CLI Integration:** It uses `argparse`, making it highly professional and easy to integrate into CI/CD pipelines (like GitHub Actions).
+3.  **Smart File Handling:** It intelligently checks if a file exists before trying to commit. If it exists, it updates it; if not, it creates it.
+4.  **Strict Pydantic Enforcement:** Just like your original script, it forces the LLM to output pure JSON mapped to a Pydantic model, ensuring the code doesn't break when trying to parse the AI's response.
+
+### How to add this to your repository:
+1.  Create a new file named `ai_issue_resolver.py` in the root of your repository and paste the code above.
+2.  Ensure your `.env` file (or environment variables) has `GITHUB_TOKEN` and `GEMINI_API_KEY` set.
+3.  Run it from your terminal like this:
+    ```bash
+    python ai_issue_resolver.py --repo rushyaayt/AI-Lastic-Repository --issue 1
+    ```
