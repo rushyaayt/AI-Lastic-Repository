@@ -2,7 +2,7 @@ Here is the fully converted, highly professional `README.md`. It combines the ce
 
 Just click the **Copy** button in the top right corner of the box below, paste it into your `README.md`, and push it to GitHub!
 
-```markdown
+
 <div align="center">
 
 # 🤖 AI-Lastic-Repository
@@ -47,15 +47,13 @@ You will need two essential keys to grant the scripts their "brain" and their "h
 - 🐙 **GITHUB_TOKEN:** Navigate to GitHub ➡️ Settings ➡️ Developer Settings ➡️ Personal Access Tokens (Classic). Generate a new token and **ensure you check the `repo` scope** to grant repository creation and PR permissions.
 
 ### 3️⃣ Secure Environment Setup
-Create a file named exactly `.env` in the root directory of this project and add your keys. **Never commit this file to GitHub!**
-
+ Grab your own tokens and API
 ```env
 # .env file
 GITHUB_TOKEN=ghp_paste_your_github_token_here
 GEMINI_API_KEY=AIza_paste_your_gemini_key_here
 ```
 
-*(Ensure `.env` is added to your `.gitignore` file to keep your keys safe!)*
 
 ---
 
