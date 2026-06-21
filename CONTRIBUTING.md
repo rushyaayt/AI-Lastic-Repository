@@ -30,9 +30,10 @@ script/setup_env.py
 ```bash
 pytest tests/
 ```
-```
+
 
 ### **`setup.py`** (Root directory - for easy installation)
+
 ```python
 from setuptools import setup, find_packages
 
