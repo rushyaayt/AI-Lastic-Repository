@@ -1,0 +1,9 @@
+# ️ Operating System Setup Guides
+
+Choose your operating system:
+
+- 🪟 [Windows Setup](./windows-setup.md)
+- 🍎 [macOS Setup](./macos-setup.md)
+- 🐧 [Linux Setup](./linux-setup.md)
+- 🐳 [Docker Setup](./docker-setup.md)
+- 🔧 [WSL2 Setup](./wsl2-setup.md)
